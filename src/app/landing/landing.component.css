@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Yanone+Kaffeesatz&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --background: rgba(10, 1, 18, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #eee;
+  font-family: 'Lato', sans-serif;
+	font-weight: 400;
+}
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* navigation styles start here */
+
+header {
+  background: var(--background);
+  text-align: center;
+  position: flex;
+  z-index: 999;
+  width: 100%;
+}
+.holder {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 0 5rem 0;
+}
+hr  {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0));
+}
+#hero {
+  background-color: #444;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 0;
+  Padding: 10em;
+  background-image: url(https://cdnb.artstation.com/p/assets/images/images/037/611/511/large/sergey-zabelin-lab-concept-1920.jpg?1620835632);
+ background-blend-mode: multiply;
+
+}
+#hero > h1 {
+  margin-bottom: 15px;
+  font-size: 50px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+.main {
+  padding-top: 0px;
+}
+#about-us {
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+#about-us h2 {
+  padding: 0 0.5rem;
+  font-size: 40px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0.1em 0.1em 0 rgba(0, 0, 0, 0.15);
+  color: #000;
+}
+
+#about-us p {
+  padding-top: 10px;
+  font-size: 1em;
+  font-family: 'Verdana', sans-serif;
+  color: #000;
+
+}
+
+
+
+/* changed this from the tutorial video to
+   allow it to gain focus, making it tabbable */
+@media (max-width: 650px) {
+  #hero {
+    margin-top: 120px;
+  }
+}
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, .75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--background);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: white;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1.2fr auto minmax(600px, 3fr) 0.2fr;
+    position: fixed;
+  }
+  
+  .logo {
+    grid-column: 1 / 2;
+  }
+  
+  nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  nav ul {
+    display: flex;
+  }
+  
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+  
+  nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.85);
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+  
+  nav a:hover::before {
+    transform: scale(1,1);
+  }
+}
+
+  #ourteam {
+    background-color: rgb(28,27,27, .7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    background-image: url(https://cdn.mos.cms.futurecdn.net/LinDYtY53WQiDFXFLamG7L.jpg);
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+ 
+  #ourteam h2 {
+    padding-top: 0px;
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;     
+    text-align: center;
+    color: white;
+    text-shadow: 0.1em 0.1em 0 rgba(0, 0, 0, 0.15);
+    }
+  #ourteam hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.45), rgba(0, 0, 0, 0));
+}
+  #ourteam p {
+    padding-top: 0;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 1.5rem;
+    font-weight: 300;
+    text-align: left;
+    color: white;
+    }
+  .content-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-sidebar > .teamimg{
+  flex: 1 1 50%;
+  min-width: 25ch;
+}
+.content-sidebar > .teamtext {
+  flex: 1 1 50%;
+  min-width: 15ch;
+}
+
+  #contact {
+  background-color: #fff;
+  align-items: center;
+}
+
+  #contact h2 {
+    padding-top: 0;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 0.1em 0.1em 0 rgba(0, 0, 0, 0.15);
+    text-align: center;
+    color: #000;
+    }
+
+ 
+  #contact > form {
+    padding: 0;
+    margin: 0 auto;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    text-align: center;
+    }
+ form {
+  display: flex;
+  justify-content: center;
+}
+#email, .btn {
+  border: none;
+  outline: none;
+}
+#email {
+    height: 40px;
+    width: 260px;
+    padding: 0 10px;
+    font-size: 16px;
+ 
+}
+
+.btn {
+  background: #333;
+  text-transform: uppercase;
+  padding: 0px 15px;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color .5s;
+}
+  
+  .btn:hover {
+  background-color: rgba(51, 51, 51, 0.4);
+  color: #000;
+}
+
+
+img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width:70%;
+    height:auto;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 0.3rem;
+}
+
+  #contact p {
+  text-align: center;
+  max-width: 600px;
+  margin: 40px auto;
+  font-size: 17px;
+  font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+footer {
+  font-size: 1.1rem;
+  font-family: 'Verdana', sans-serif;
+  background-color: hsla(0,0%,0%,0.88);  
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  color: #e3e3e3;
+}
+footer p {
+  font-family: 'Montserrat', sans-serif;
+    margin-left: 1.5rem;
+    font-weight: 300;
+}
+footer .link {
+  color: #F3C72F;
+}
